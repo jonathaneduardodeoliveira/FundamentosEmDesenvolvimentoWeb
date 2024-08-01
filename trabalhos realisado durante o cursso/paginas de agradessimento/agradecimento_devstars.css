@@ -1,0 +1,25 @@
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: blue;
+}
+
+body {
+  background-color: white;
+}
+
+p:first-of-type {
+  font-size: 18px;
+  font-weight: 500;
+  font-style: italic;
+  color: red;
+}
+
+p:last-of-type {
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: green;
+}
+

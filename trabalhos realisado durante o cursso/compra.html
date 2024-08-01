@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Compra</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="mostrarEndereco()">Comprar</button>
+    <div id="endereco" class="hidden">
+        <h2>Endereço de Entrega</h2>
+        <input type="text" id="cep" placeholder="CEP">
+        <br>
+        <input type="text" id="rua" placeholder="Rua">
+        <br>
+        <input type="text" id="numero" placeholder="Número">
+        <br>
+        <input type="text" id="complemento" placeholder="Complemento">
+        <br>
+        <input type="text" id="bairro" placeholder="Bairro">
+        <br>
+        <input type="text" id="cidade" placeholder="Cidade">
+        <br>
+        <input type="text" id="estado" placeholder="Estado">
+        <br>
+        <button onclick="mostrarPagamento()">Próximo</button>
+    </div>
+    <div id="pagamento" class="hidden">
+        <h2>Dados de Pagamento</h2>
+        <button onclick="pagamentoPix()">Pagar com Pix</button>
+        <button onclick="adicionarCartao()">Adicionar Cartão</button>
+        <button onclick="gerarBoleto()">Gerar Boleto</button>
+    </div>
+    <div id="dadosCartao" class="hidden">
+        <h2>Dados do Cartão</h2>
+        <input type="text" id="numeroCartao" placeholder="Número do Cartão">
+        <br>
+        <input type="text" id="validade" placeholder="Validade">
+        <br>
+        <input type="text" id="cvv" placeholder="CVV">
+        <br>
+        <input type="text" id="nomeTitular" placeholder="Nome do Titular">
+        <br>
+        <input type="text" id="cpfTitular" placeholder="CPF do Titular">
+        <br>
+        <input type="text" id="apelidoCartao" placeholder="Apelido do Cartão">
+        <br>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+    <div id="agradecimento" class="hidden">
+        <h2>Obrigado por testar meu site</h2>
+        <p>Direitos autorais: Jonathan Eduardo de Oliveira</p>
+        <button onclick="voltarInicio()">Voltar para a página inicial</button>
+    </div>
+
+    <script>
+        function mostrarEndereco() {
+            document.getElementById('endereco').classList.remove('hidden');
+        }
+
+        function mostrarPagamento() {
+            document.getElementById('pagamento').classList.remove('hidden');
+        }
+
+        function pagamentoPix() {
+            alert('Número aleatório gerado para pagamento com Pix');
+            document.getElementById('dadosCartao').classList.add('hidden');
+            document.getElementById('agradecimento').classList.remove('hidden');
+        }
+
+        function adicionarCartao() {
+            document.getElementById('pagamento').classList.add('hidden');
+            document.getElementById('dadosCartao').classList.remove('hidden');
+        }
+
+        function gerarBoleto() {
+            alert('Boleto gerado! O pagamento pode demorar até 3 dias úteis para ser reconhecido.');
+            var conteudo = "<h1>Boleto Gerado</h1><p>O pagamento pode demorar até 3 dias úteis para ser reconhecido.</p><p>Obrigado por testar meu site</p><p>Direitos autorais: Jonathan Eduardo de Oliveira</p>";
+            var blob = new Blob([conteudo], { type: "application/pdf" });
+            var url = URL.createObjectURL(blob);
+            window.open(url);
+        }
+
+        function finalizarCompra() {
+            alert('Compra finalizada com sucesso');
+            document.getElementById('dadosCartao').classList.add('hidden');
+            document.getElementById('agradecimento').classList.remove('hidden');
+        }
+
+        function voltarInicio() {
+            document.getElementById('agradecimento').classList.add('hidden');
+            document.getElementById('endereco').classList.add('hidden');
+            document.getElementById('pagamento').classList.add('hidden');
+            document.getElementById('dadosCartao').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
