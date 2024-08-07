@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
         loadProducts();
     } else if (window.location.pathname.endsWith('Carrinho.html')) {
         displayCartItems();
+        document.getElementById('clear-cart-button')?.addEventListener('click', () => {
+            if (confirm('Tem certeza de que deseja limpar o carrinho?')) {
+                localStorage.removeItem('Carrinho');
+                displayCartItems();
+            }
+        });
     }
 
     document.getElementById('checkout-button')?.addEventListener('click', () => {
